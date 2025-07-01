@@ -1,0 +1,17 @@
+
+
+import './App.css'
+import { Button } from './components/ui/button'
+
+function App() {
+
+
+  return (
+   
+   <div>
+         <Button>Lets start the project</Button>
+   </div>
+  )
+}
+
+export default App

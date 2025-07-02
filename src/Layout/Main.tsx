@@ -1,0 +1,23 @@
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import Footer from "@/Shared/Footer";
+import Navbar from "@/Shared/Navbar";
+import { Outlet } from "react-router";
+
+
+const Main = () => {
+    return (
+        <div>
+            <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+                <Navbar></Navbar>
+                <div className="flex min-h-screen">
+                    <Outlet></Outlet>
+                </div>
+                <Footer></Footer>
+
+            </ThemeProvider>
+
+        </div>
+    );
+};
+
+export default Main;

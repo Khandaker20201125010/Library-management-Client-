@@ -10,8 +10,6 @@ export interface IBook {
   createdAt: Date;
   updatedAt: Date;
   updateAvailability(): Promise<this>;
-  Availability: string;
-  Description?: string;
 }
 
 export interface IBorrow {

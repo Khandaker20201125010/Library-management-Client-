@@ -24,6 +24,7 @@ const BooksCards = ({ book }: Props) => {
           {book.available ? `Available (${book.copies} copies)` : "Unavailable"}
         </span>
       </div>
+      <button className="btn border-none h-6 w-40 mt-4 bg-gradient-to-r from-emerald-600 to-teal-500 text-white py-1 px-2 rounded-md hover:bg-blue-600 transition duration-300">View Details</button>
     </div>
   );
 };

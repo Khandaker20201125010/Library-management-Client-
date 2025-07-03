@@ -12,6 +12,7 @@ export const apiSlice = createApi({
   }),
   tagTypes: ["Books", "Borrows"],
   endpoints: (builder) => ({
+    
     // GET all books
     getBooks: builder.query<IBook[], void>({
       query: () => "/books",

@@ -1,4 +1,4 @@
-import React from 'react';
+import icon from '../assets/images/icon.png';
 
 const Footer = () => {
     return (
@@ -6,8 +6,9 @@ const Footer = () => {
             <footer className="bg-white dark:bg-gray-900">
                 <div className="container px-6 py-8 mx-auto">
                     <div className="flex flex-col items-center text-center">
-                        <a href="#">
-                            <img src="" alt="" />
+                        <a className='flex flex-col'>
+                            <img className="w-10 mx-4" src={icon} alt="Logo" />
+                            <h1 className=" font-bold text-green-800 dark:text-white">BookLynk</h1>
                         </a>
 
                         <div className="flex flex-wrap justify-center mt-6 -mx-4">
@@ -27,7 +28,7 @@ const Footer = () => {
                     <hr className="my-6 border-gray-200 md:my-10 dark:border-gray-700" />
 
                     <div className="flex flex-col items-center sm:flex-row sm:justify-between">
-                        <p className="text-sm text-gray-500 dark:text-gray-300">© Copyright 2021. All Rights Reserved.</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-300">© Copyright {new Date().getFullYear()}. All Rights Reserved.</p>
 
                         <div className="flex -mx-2">
                             <a href="#" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400" aria-label="Reddit">

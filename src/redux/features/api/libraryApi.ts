@@ -1,63 +1,72 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import type { Book, Borrow, BorrowSummary } from '../../types'
+import type {
+  IBook,
+  IBorrow,
+  IBorrowSummary,
+} from "@/redux/Interfaces/Interfaces";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const apiSlice = createApi({
-  reducerPath: 'api', // <== this is your slice name for RTK Query
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://your-api.com/api' }),
-  tagTypes: ['Books', 'Borrows'],
+  reducerPath: "api",
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://library-management-api-ten.vercel.app/api",
+  }),
+  tagTypes: ["Books", "Borrows"],
   endpoints: (builder) => ({
     // GET all books
-    getBooks: builder.query<Book[], void>({
-      query: () => '/books',
-      providesTags: ['Books'],
+    getBooks: builder.query<IBook[], void>({
+      query: () => "/books",
+      transformResponse: (response: { data: IBook[] }) => response.data,
     }),
 
     // CREATE a book
-    addBook: builder.mutation<Book, Partial<Book>>({
+    addBook: builder.mutation<IBook, Partial<IBook>>({
       query: (book) => ({
-        url: '/books',
-        method: 'POST',
+        url: "/books",
+        method: "POST",
         body: book,
       }),
-      invalidatesTags: ['Books'],
+      invalidatesTags: ["Books"],
     }),
 
     // UPDATE a book
-    updateBook: builder.mutation<Book, { id: string; data: Partial<Book> }>({
+    updateBook: builder.mutation<IBook, { id: string; data: Partial<IBook> }>({
       query: ({ id, data }) => ({
         url: `/books/${id}`,
-        method: 'PATCH',
+        method: "PATCH",
         body: data,
       }),
-      invalidatesTags: ['Books'],
+      invalidatesTags: ["Books"],
     }),
 
     // DELETE a book
     deleteBook: builder.mutation<{ success: boolean }, string>({
       query: (id) => ({
         url: `/books/${id}`,
-        method: 'DELETE',
+        method: "DELETE",
       }),
-      invalidatesTags: ['Books'],
+      invalidatesTags: ["Books"],
     }),
 
     // BORROW book
-    borrowBook: builder.mutation<Borrow, { bookId: string; quantity: number; dueDate: string }>({
+    borrowBook: builder.mutation<
+      IBorrow,
+      { bookId: string; quantity: number; dueDate: string }
+    >({
       query: ({ bookId, ...body }) => ({
         url: `/borrows/${bookId}`,
-        method: 'POST',
+        method: "POST",
         body,
       }),
-      invalidatesTags: ['Books', 'Borrows'],
+      invalidatesTags: ["Books", "Borrows"],
     }),
 
     // BORROW summary
-    getBorrowSummary: builder.query<BorrowSummary[], void>({
-      query: () => '/borrows/summary',
-      providesTags: ['Borrows'],
+    getBorrowSummary: builder.query<IBorrowSummary[], void>({
+      query: () => "/borrows/summary",
+      providesTags: ["Borrows"],
     }),
   }),
-})
+});
 
 export const {
   useGetBooksQuery,
@@ -66,4 +75,4 @@ export const {
   useDeleteBookMutation,
   useBorrowBookMutation,
   useGetBorrowSummaryQuery,
-} = apiSlice
+} = apiSlice;

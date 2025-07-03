@@ -1,5 +1,5 @@
 import type { IBook } from '@/redux/Interfaces/Interfaces'
-import { createSlice, type PayloadAction,  } from '@reduxjs/toolkit'
+import { createSlice,type PayloadAction } from '@reduxjs/toolkit'
 
 
 interface BookState {
@@ -10,7 +10,7 @@ const initialState: BookState = {
   list: [],
 }
 
-const bookSlice = createSlice({
+export const bookSlice = createSlice({
   name: 'books',
   initialState,
   reducers: {

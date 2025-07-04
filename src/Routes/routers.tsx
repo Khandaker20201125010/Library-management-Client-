@@ -3,6 +3,7 @@ import AddBook from "@/Pages/AddBook";
 import AllBooks from "@/Pages/AllBooks";
 import BorrowSummary from "@/Pages/BorrowSummary";
 import DetailsPage from "@/Pages/DetailsPage";
+import EditPage from "@/Pages/EditPage";
 
 import { createBrowserRouter } from "react-router";
 
@@ -27,6 +28,10 @@ export const routers = createBrowserRouter([
         {
             path: "/details/:id",
             element:<DetailsPage></DetailsPage>
+        },
+        {
+            path: "/edit/:id",
+            element:<EditPage></EditPage>
         },
     
 

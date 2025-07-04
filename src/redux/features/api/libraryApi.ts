@@ -16,6 +16,7 @@ export const apiSlice = createApi({
     getBooks: builder.query<IBook[], void>({
       query: () => "/books",
       transformResponse: (response: { data: IBook[] }) => response.data,
+        providesTags: ["Books"],
     }),
     getBookById: builder.query<IBook, string>({
       query: (id) => `/books/${id}`,

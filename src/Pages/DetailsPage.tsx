@@ -1,4 +1,4 @@
-import { useGetBookByIdQuery } from "@/redux/features/api/libraryApi";
+import {  useGetBookByIdQuery } from "@/redux/features/api/libraryApi";
 
 
 import { ArrowLeft, BookOpen, User, Hash, Layers, Check, X } from "lucide-react";
@@ -10,19 +10,24 @@ import { Skeleton } from "@/components/ui/skeleton";
 const DetailsPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { 
-    data: book, 
-    isLoading, 
+
+
+  const {
+    data: book,
+    isLoading,
     isError,
-    error 
+    error
   } = useGetBookByIdQuery(id!);
+
+
+
 
 
   return (
     <div className="max-w-4xl mx-auto my-8 px-4 sm:px-6 lg:px-8">
-      <Button 
-        onClick={() => navigate(-1)} 
-        variant="ghost" 
+      <Button
+        onClick={() => navigate(-1)}
+        variant="ghost"
         className="mb-6 hover:bg-gray-100 dark:hover:bg-gray-700"
       >
         <ArrowLeft className="mr-2 h-4 w-4" /> Back to Books
@@ -122,11 +127,11 @@ const DetailsPage = () => {
                 <Button className="bg-gradient-to-r from-emerald-600 to-teal-500 hover:bg-emerald-700 text-white">
                   Borrow Book
                 </Button>
-                
+
               </div>
             </div>
 
-       
+
           </>
         )}
       </div>

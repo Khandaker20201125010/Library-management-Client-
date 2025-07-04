@@ -1,15 +1,51 @@
+import { useDeleteBookMutation } from "@/redux/features/api/libraryApi";
 import type { IBook } from "@/redux/Interfaces/Interfaces";
 
 import { BookOpen, User, Hash, LibraryBig, Edit, Trash2, ArrowRight } from "lucide-react";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
 
 interface Props {
   book: IBook;
 }
 
 const BookCard = ({ book }: Props) => {
+  const [deleteBook] = useDeleteBookMutation();
+
+
+  const handleDelete = () => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "This book will be permanently deleted!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteBook(book._id)
+          .unwrap()
+          .then(() => {
+            Swal.fire(
+              'Deleted!',
+              'The book has been deleted.',
+              'success'
+            );
+          })
+          .catch(() => {
+            Swal.fire(
+              'Error!',
+              'Something went wrong.',
+              'error'
+            );
+          });
+      }
+    });
+  };
   return (
-      <div className="group relative bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 flex flex-col h-full">
+    <div className="group relative bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 flex flex-col h-full">
       {/* Status Ribbon */}
       <div className={`absolute top-0 right-0 px-3 py-1 text-xs font-semibold rounded-bl-lg
         ${book.available ? 'bg-emerald-500 text-white' : 'bg-rose-500 text-white'}`}>
@@ -69,18 +105,18 @@ const BookCard = ({ book }: Props) => {
 
           <div className="grid grid-cols-2 gap-2">
             <button
-             
+
               disabled={!book.available}
               className={`py-2 px-3 text-sm rounded-md transition-all duration-300 flex items-center justify-center
-                ${book.available 
-                  ? 'bg-blue-500 hover:bg-blue-600 text-white' 
+                ${book.available
+                  ? 'bg-blue-500 hover:bg-blue-600 text-white'
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-500 cursor-not-allowed'}`}
             >
               Borrow
             </button>
 
-            <button
-             
+            <button onClick={handleDelete}
+
               className="py-2 px-3 bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600 text-white text-sm rounded-md transition-all duration-300 flex items-center justify-center"
             >
               <Trash2 className="h-4 w-4 mr-1" />

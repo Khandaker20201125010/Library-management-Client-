@@ -12,11 +12,15 @@ export const apiSlice = createApi({
   }),
   tagTypes: ["Books", "Borrows"],
   endpoints: (builder) => ({
-    
     // GET all books
     getBooks: builder.query<IBook[], void>({
       query: () => "/books",
       transformResponse: (response: { data: IBook[] }) => response.data,
+    }),
+    getBookById: builder.query<IBook, string>({
+      query: (id) => `/books/${id}`,
+      transformResponse: (response: { data: IBook }) => response.data,
+      providesTags: ["Books"],
     }),
 
     // CREATE a book
@@ -71,6 +75,7 @@ export const apiSlice = createApi({
 
 export const {
   useGetBooksQuery,
+  useGetBookByIdQuery,
   useAddBookMutation,
   useUpdateBookMutation,
   useDeleteBookMutation,

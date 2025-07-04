@@ -58,7 +58,7 @@ const AddBook = () => {
 
 
     return (
-        <div className="text-black max-w-6xl w-5xl mx-auto mt-10 p-8 bg-white shadow-lg rounded-2xl">
+        <div className="text-black max-w-6xl w-5xl mx-auto mt-10 p-8 bg-white shadow-lg rounded-md border border-green-500">
             <h2 className="text-2xl font-bold mb-6 text-center">Add a New <span className="text-emerald-600">Book</span></h2>
              <p className="text-gray-600 mb-6 text-center">Please fill out the form below to add a new book to the library.</p>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">

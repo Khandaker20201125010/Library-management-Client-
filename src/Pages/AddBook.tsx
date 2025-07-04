@@ -1,15 +1,9 @@
-'use client';
-
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
 import Swal from "sweetalert2";
 import { useAddBookMutation } from "@/redux/features/api/libraryApi";
 import { useNavigate } from "react-router";
-
-
-
 
 const bookSchema = z.object({
     title: z.string().min(1, "Title is required"),
@@ -48,7 +42,7 @@ const AddBook = () => {
             };
             await addBook(formatted).unwrap();
             Swal.fire("Success", "Book added successfully", "success").then(() => {
-               navigate('/');
+                navigate('/');
             });
             reset();
         } catch (error) {
@@ -60,7 +54,7 @@ const AddBook = () => {
     return (
         <div className="text-black max-w-6xl w-5xl mx-auto mt-10 p-8 bg-white shadow-lg rounded-md border border-green-500">
             <h2 className="text-2xl font-bold mb-6 text-center">Add a New <span className="text-emerald-600">Book</span></h2>
-             <p className="text-gray-600 mb-6 text-center">Please fill out the form below to add a new book to the library.</p>
+            <p className="text-gray-600 mb-6 text-center">Please fill out the form below to add a new book to the library.</p>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                 <div>
                     <label className="block text-sm font-medium">Title</label>

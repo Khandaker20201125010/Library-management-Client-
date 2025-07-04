@@ -1,4 +1,4 @@
-import {  useGetBookByIdQuery } from "@/redux/features/api/libraryApi";
+import { useGetBookByIdQuery } from "@/redux/features/api/libraryApi";
 
 
 import { ArrowLeft, BookOpen, User, Hash, Layers, Check, X } from "lucide-react";
@@ -16,8 +16,10 @@ const DetailsPage = () => {
     data: book,
     isLoading,
     isError,
-    error
   } = useGetBookByIdQuery(id!);
+
+  if (isLoading) return <div className="text-center py-10">Loading books...</div>
+  if (isError) return <div className="text-center py-10 text-red-500">Failed to load books.</div>
 
 
 

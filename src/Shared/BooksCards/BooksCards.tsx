@@ -1,7 +1,9 @@
+import Modal from "@/components/Modal";
 import { useDeleteBookMutation } from "@/redux/features/api/libraryApi";
 import type { IBook } from "@/redux/Interfaces/Interfaces";
 
 import { BookOpen, User, Hash, LibraryBig, Edit, Trash2, ArrowRight } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
 
@@ -11,6 +13,8 @@ interface Props {
 
 const BookCard = ({ book }: Props) => {
   const [deleteBook] = useDeleteBookMutation();
+  const [openBorrowModal, setOpenBorrowModal] = useState(false);
+
 
 
   const handleDelete = () => {
@@ -105,7 +109,7 @@ const BookCard = ({ book }: Props) => {
 
           <div className="grid grid-cols-2 gap-2">
             <button
-
+              onClick={() => setOpenBorrowModal(true)}
               disabled={!book.available}
               className={`py-2 px-3 text-sm rounded-md transition-all duration-300 flex items-center justify-center
                 ${book.available
@@ -125,6 +129,11 @@ const BookCard = ({ book }: Props) => {
           </div>
         </div>
       </div>
+        <Modal 
+        book={book} 
+        open={openBorrowModal} 
+        setOpen={setOpenBorrowModal} 
+      />
     </div>
   );
 };

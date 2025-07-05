@@ -16,7 +16,7 @@ export const apiSlice = createApi({
     getBooks: builder.query<IBook[], void>({
       query: () => "/books",
       transformResponse: (response: { data: IBook[] }) => response.data,
-        providesTags: ["Books"],
+      providesTags: ["Books"],
     }),
     getBookById: builder.query<IBook, string>({
       query: (id) => `/books/${id}`,
@@ -56,10 +56,10 @@ export const apiSlice = createApi({
     // BORROW book
     borrowBook: builder.mutation<
       IBorrow,
-      { bookId: string; quantity: number; dueDate: string }
+      { book: string; quantity: number; dueDate: string }
     >({
-      query: ({ bookId, ...body }) => ({
-        url: `/borrows/${bookId}`,
+      query: (body) => ({
+        url: "/borrow",
         method: "POST",
         body,
       }),
@@ -68,7 +68,7 @@ export const apiSlice = createApi({
 
     // BORROW summary
     getBorrowSummary: builder.query<IBorrowSummary[], void>({
-      query: () => "/borrows/summary",
+      query: () => "/borrows",
       providesTags: ["Borrows"],
     }),
   }),

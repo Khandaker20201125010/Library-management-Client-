@@ -51,7 +51,7 @@ const BorrowSummary = () => {
         <button
           onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
           disabled={page === 1}
-          className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+          className="px-4 py-2 bg-emerald-500 text-white rounded disabled:opacity-50"
         >
           Prev
         </button>
@@ -61,7 +61,7 @@ const BorrowSummary = () => {
             <button
               key={p}
               onClick={() => setPage(p)}
-              className={`px-3 py-1 rounded ${p === page ? "bg-emerald-500 text-white" : "bg-gray-100"}`}
+              className={`px-3 py-1 rounded ${p === page ? "bg-emerald-500 text-white" : "bg-gray-500"}`}
             >
               {p}
             </button>
@@ -70,7 +70,7 @@ const BorrowSummary = () => {
         <button
           onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
           disabled={page === totalPages}
-          className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+          className="px-4 py-2 bg-emerald-500 rounded disabled:opacity-50 text-white"
         >
           Next
         </button>

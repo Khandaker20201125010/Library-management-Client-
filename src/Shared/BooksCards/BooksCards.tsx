@@ -129,10 +129,10 @@ const BookCard = ({ book }: Props) => {
           </div>
         </div>
       </div>
-        <Modal 
-        book={book} 
-        open={openBorrowModal} 
-        setOpen={setOpenBorrowModal} 
+      <Modal
+        book={book}
+        open={openBorrowModal}
+        setOpen={setOpenBorrowModal}
       />
     </div>
   );

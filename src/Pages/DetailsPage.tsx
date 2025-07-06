@@ -6,9 +6,19 @@ import { ArrowLeft, BookOpen, User, Hash, Layers, Check, X } from "lucide-react"
 import { Button } from "@/components/ui/button";
 import { useNavigate, useParams } from "react-router";
 import { Skeleton } from "@/components/ui/skeleton";
+import Modal from "@/components/Modal";
+import { useState } from "react";
+import type { IBook } from "@/redux/Interfaces/Interfaces";
+
+interface ModalProps {
+  open: boolean;
+  setOpen: (open: boolean) => void;
+  book?: IBook;
+}
 
 const DetailsPage = () => {
   const { id } = useParams<{ id: string }>();
+  const [openBorrowModal, setOpenBorrowModal] = useState(false);
   const navigate = useNavigate();
 
 
@@ -126,7 +136,7 @@ const DetailsPage = () => {
               )}
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button className="bg-gradient-to-r from-emerald-600 to-teal-500 hover:bg-emerald-700 text-white">
+                <Button onClick={() => setOpenBorrowModal(true)} className="bg-gradient-to-r from-emerald-600 to-teal-500 hover:bg-emerald-700 text-white">
                   Borrow Book
                 </Button>
 
@@ -137,6 +147,13 @@ const DetailsPage = () => {
           </>
         )}
       </div>
+      {book && (
+        <Modal
+          book={book}
+          open={openBorrowModal}
+          setOpen={setOpenBorrowModal}
+        />
+      )}
     </div>
   );
 };

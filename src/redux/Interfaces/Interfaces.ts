@@ -22,8 +22,20 @@ export interface IBorrow {
 }
 
 export interface IBorrowSummary {
-  _id: string;
-  bookTitle: string;
-  ISBN: string;
-  totalQuantityBorrowed: number;
+  book: {
+    title: string;
+    isbn: string;
+  };
+  totalQuantity: number;
+}
+export interface IBookResponse {
+  success: boolean;
+  message: string;
+  data: IBook[];
+  pagination: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
 }

@@ -6,6 +6,7 @@ import { HiOutlineBookOpen } from "react-icons/hi";
 import { LuBookmarkPlus } from "react-icons/lu";
 import { NavLink } from "react-router";
 import icon from "../assets/images/icon.png"
+import { Home } from "lucide-react";
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [click, setClick] = useState(false);
@@ -30,7 +31,23 @@ const Navbar = () => {
                         }`
                     }
                 >
-                  <HiOutlineBookOpen className="h-5 w-5 mr-2" />
+                  <Home className="h-5 w-5 mr-2" />
+                   Home
+                </NavLink>
+            </li>
+            <li className="list-none group relative w-full whitespace-nowrap transition-all duration-300 cursor-pointer">
+                <NavLink
+                    to="/books"
+                    onClick={closeMenu}
+                    className={({ isActive }) =>
+                        `font-medium px-4 py-2 rounded-lg transition-all duration-300 flex items-center
+                    ${isActive
+                            ? "bg-gradient-to-r from-emerald-600 to-teal-500 text-white shadow-lg"
+                            : "text-gray-600 hover:text-emerald-700 dark:text-gray-300 dark:hover:text-emerald-400 hover:bg-gray-100 dark:hover:bg-gray-700"
+                        }`
+                    }
+                >
+                    <HiOutlineBookOpen className="h-5 w-5 mr-2" />
                     All Books
                 </NavLink>
             </li>
@@ -47,7 +64,7 @@ const Navbar = () => {
                         }`
                     }
                 >
-                  <LuBookmarkPlus className="h-5 w-5 mr-2" />
+                    <LuBookmarkPlus className="h-5 w-5 mr-2" />
 
                     Add Books
                 </NavLink>
@@ -65,7 +82,7 @@ const Navbar = () => {
                         }`
                     }
                 >
-                 <GoFileDiff className="h-5 w-5 mr-2" />
+                    <GoFileDiff className="h-5 w-5 mr-2" />
                     Borrow Summary
                 </NavLink>
             </li>
@@ -116,7 +133,7 @@ const Navbar = () => {
                         {links}
                     </div>
 
-                  
+
 
                     <div className="hidden md:block ml-4">
                         {/* ModeToggle on desktop */}

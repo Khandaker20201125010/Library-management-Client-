@@ -6,7 +6,7 @@ import { Outlet } from "react-router";
 
 const Main = () => {
     return (
-        <div>
+        <div className="max-w-[1440px] mx-auto">
             <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
                 <Navbar></Navbar>
                 <div className="flex min-h-screen">

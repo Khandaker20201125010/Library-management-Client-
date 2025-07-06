@@ -8,14 +8,10 @@ import { useNavigate, useParams } from "react-router";
 import { Skeleton } from "@/components/ui/skeleton";
 import Modal from "@/components/Modal";
 import { useState } from "react";
-import type { IBook } from "@/redux/Interfaces/Interfaces";
+
 import Banner from "@/Shared/Banner";
 
-interface ModalProps {
-  open: boolean;
-  setOpen: (open: boolean) => void;
-  book?: IBook;
-}
+
 
 const DetailsPage = () => {
   const { id } = useParams<{ id: string }>();

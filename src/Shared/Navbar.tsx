@@ -1,5 +1,4 @@
 import { ModeToggle } from "@/components/ui/mode-toggle";
-import { ThemeProvider } from "@/components/ui/theme-provider";
 import { useEffect, useState } from "react";
 import { GoFileDiff } from "react-icons/go";
 import { HiOutlineBookOpen } from "react-icons/hi";
@@ -9,7 +8,7 @@ import icon from "../assets/images/icon.png"
 import { Home } from "lucide-react";
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [click, setClick] = useState(false);
+    const [, setClick] = useState(false);
     const closeMenu = () => {
         setClick(false);
     };

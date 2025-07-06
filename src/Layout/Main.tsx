@@ -1,3 +1,4 @@
+
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import Footer from "@/Shared/Footer";
 import Navbar from "@/Shared/Navbar";
@@ -8,12 +9,11 @@ const Main = () => {
     return (
         <div className="max-w-[1440px] mx-auto">
             <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-                <Navbar></Navbar>
+                <Navbar />
                 <div className="flex min-h-screen">
-                    <Outlet></Outlet>
+                    <Outlet />
                 </div>
-                <Footer></Footer>
-
+                <Footer />
             </ThemeProvider>
 
         </div>

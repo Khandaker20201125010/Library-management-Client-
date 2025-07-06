@@ -1,11 +1,18 @@
-# React + TypeScript + Vite
+# Library Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack Library Management System that allows users to explore, search, and manage books, with an intuitive UI and powerful backend. Built to demonstrate modern web development best practices.
 
-Currently, two official plugins are available:
+ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Browse all books with pagination
+- View book details
+- Admin can add, update, delete books
+- User authentication & authorization
+- Responsive UI (mobile, tablet, desktop)
+- Sort, filter, and search books
+- Dark & light theme toggle
+
+![Homepage](./src/localhost_5173_books.png)
 
 ## Expanding the ESLint configuration
 

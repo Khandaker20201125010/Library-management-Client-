@@ -43,7 +43,7 @@ const AddBook = () => {
             };
             await addBook(formatted).unwrap();
             Swal.fire("Success", "Book added successfully", "success").then(() => {
-                navigate('/');
+                navigate('/addBooks');
             });
             reset();
         } catch (error) {

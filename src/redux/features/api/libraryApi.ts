@@ -13,14 +13,20 @@ export const apiSlice = createApi({
   tagTypes: ["Books", "Borrows"],
   endpoints: (builder) => ({
     // GET all books
-   getBooks: builder.query<
+    getBooks: builder.query<
       {
         data: IBook[];
-        meta: { total: number; page: number; limit: number; totalPages: number };
+        meta: {
+          total: number;
+          page: number;
+          limit: number;
+          totalPages: number;
+        };
       },
       { page?: number; limit?: number }
     >({
-      query: ({ page = 1, limit = 6 } = {}) => `/books?page=${page}&limit=${limit}`,
+      query: ({ page = 1, limit = 6 } = {}) =>
+        `/books?page=${page}&limit=${limit}`,
       providesTags: ["Books"],
     }),
     getBookById: builder.query<IBook, string>({
@@ -72,14 +78,21 @@ export const apiSlice = createApi({
     }),
 
     // BORROW summary
-    getBorrowSummary: builder.query<IBorrowSummary[], void>({
-      query: () => "/borrow",
-      transformResponse: (response: {
-        success: boolean;
-        message: string;
+    getBorrowSummary: builder.query<
+      {
         data: IBorrowSummary[];
-      }) => response.data,
-      providesTags: ["Borrows", "Books"],
+        meta: {
+          total: number;
+          page: number;
+          limit: number;
+          totalPages: number;
+        };
+      },
+      { page?: number; limit?: number }
+    >({
+      query: ({ page = 1, limit = 5 } = {}) =>
+        `/borrow?page=${page}&limit=${limit}`,
+      providesTags: ["Borrows"],
     }),
   }),
 });
